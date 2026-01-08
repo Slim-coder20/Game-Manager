@@ -16,9 +16,14 @@ app.get("/api/games", (req, res) => {
   res.json(games);
 });
 
+app.post("/api/games", (req, res) => {
+  const newGame = req.body;
+  games.push({...newGame, id: games.length + 1});
+  res.status(201).json({message: "Game created successfully"}); 
+});
+
 // Démarage du serveur //
 const PORT = 3000;
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
