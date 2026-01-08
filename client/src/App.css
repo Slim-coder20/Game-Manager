@@ -4,22 +4,20 @@
 
 /* Default to LIGHT MODE if no class is set */
 :root {
-  --color-bg: #ffffff; /* White page background */
-  --color-text: #333333; /* Dark text */
-  --color-accent: #0cc669; /* Bright green accent */
-  --color-card: #f4f4f4; /* Light card background */
+  --color-bg: #ffffff;
+  --color-text: #333333; 
+  --color-accent: #0cc669; 
+  --color-card: #f4f4f4; 
 }
 
 /* Dark theme overrides */
 .dark-mode {
-  --color-bg: #080808; /* Very dark background */
-  --color-text: #c2c1c9; /* Light gray text */
-  --color-card: #373554; /* Dark card accent */
+  --color-bg: #080808; 
+  --color-text: #c2c1c9;
+  --color-card: #373554;
 }
 
-/* If you want your project to start in dark mode, you can 
-   make :root define the dark colors, and .light-mode override them.
-   (We'll leave it as-is: default light, dark overrides.) */
+
 
 /* ======================================
    GLOBAL RESET & BASE
@@ -85,7 +83,11 @@ body {
 
 .navbar a:hover {
   color: var(--color-accent);
-}
+} 
+
+
+/* Navbar Mobile Responsive  */
+
 
 /* ======================================
    PAGE CONTAINER
@@ -270,4 +272,17 @@ button:hover {
 }
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* responsive design */ 
+@media (max-width: 768px) {
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .games-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
