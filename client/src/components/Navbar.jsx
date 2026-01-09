@@ -1,9 +1,16 @@
 import react from "react";
 import { Link } from "react-router-dom";
-
+import { useThemeStore } from "../store/useThemeStore";
 export default function Navbar() {
+  // Utilisation du store pour le thème dark mode //
+  const { theme, toggleTheme } = useThemeStore(); 
+  
+  // Fonction pour basculer le thème dark mode // 
+  const isDarkMode = theme === "dark"; 
+  
   return (
-    <div className="navbar">
+    // Classe navbar avec la classe dark-mode si le thème est dark // 
+    <div className={`navbar ${isDarkMode ? "dark-mode" : ""}`}>
       <div className="navbar-title">
         GameStore
       </div>
@@ -11,12 +18,13 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/create">Add Game</Link>
         
-      </div>
-      {/* <div className="navbar-toggle">
-        <button className="theme-switch">
+        {/* Toggle pour le thème dark mode avec le store */}
+        <label className="theme-switch">
+          <input type="checkbox" checked={isDarkMode} onChange={toggleTheme} aria-label="Toggle theme"/>
           <span className="slider round"></span>
-        </button>
-      </div> */}
+        </label>
+      </div>
+    
     </div>
   );
 }

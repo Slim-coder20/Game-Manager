@@ -5,19 +5,19 @@
 /* Default to LIGHT MODE if no class is set */
 :root {
   --color-bg: #ffffff;
-  --color-text: #333333; 
-  --color-accent: #0cc669; 
-  --color-card: #f4f4f4; 
+  --color-text: #333333;
+  --color-accent: #0cc669;
+  --color-card: transparent;
 }
 
 /* Dark theme overrides */
-.dark-mode {
-  --color-bg: #080808; 
+.dark-mode,
+html.dark-mode,
+body.dark-mode {
+  --color-bg: #080808;
   --color-text: #c2c1c9;
-  --color-card: #373554;
+  --color-card: transparent;
 }
-
-
 
 /* ======================================
    GLOBAL RESET & BASE
@@ -30,10 +30,18 @@
   padding: 0;
 }
 
-html,
+html {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Nunito", sans-serif, Arial, sans-serif;
+  /* We'll reference the variables for background & text */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
 body {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   font-family: "Nunito", sans-serif, Arial, sans-serif;
   /* We'll reference the variables for background & text */
   background-color: var(--color-bg);
@@ -41,6 +49,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  margin: 0;
+  padding: 0;
 }
 
 /* ======================================
@@ -83,11 +93,9 @@ body {
 
 .navbar a:hover {
   color: var(--color-accent);
-} 
-
+}
 
 /* Navbar Mobile Responsive  */
-
 
 /* ======================================
    PAGE CONTAINER
@@ -132,7 +140,7 @@ a:hover {
    FORMS & CARD BLOCKS
    ====================================== */
 .bg-card {
-  background-color: var(--color-bg);
+  background-color: var(--color-card);
   padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 2rem;
@@ -156,7 +164,6 @@ a:hover {
   padding: 1.5rem;
   text-align: center;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
- 
 }
 
 .form-container label {
@@ -315,7 +322,7 @@ button:hover {
   border-radius: 50%;
 }
 
-/* responsive design */ 
+/* responsive design */
 @media (max-width: 768px) {
   .games-grid {
     grid-template-columns: repeat(2, 1fr);
