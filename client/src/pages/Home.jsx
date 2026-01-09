@@ -17,13 +17,16 @@ export default function Home() {
     queryKey: ["games"],
     queryFn: fetchGames,
   });
-  console.log(data);
+  console.log("Données reçues:", data);
+  console.log("Type de données:", Array.isArray(data) ? "Array" : typeof data);
   if (isLoading) return <div className="page-container">Loading games ...</div>;
+  if (!data)
+    return <div className="page-container">Aucune donnée disponible</div>;
   return (
     <div className="page-container">
       <h1>My Games</h1>
       <div className="bg-card" style={{ marginTop: "1rem", padding: "1rem" }}>
-        <GameList games={data} />
+        <GameList games={Array.isArray(data) ? data : []} />
       </div>
     </div>
   );
