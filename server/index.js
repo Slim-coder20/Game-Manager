@@ -50,6 +50,17 @@ app.put("/api/games/:id", (req, res) => {
   res.json(games[index]);
 });
 
+// Suppression de liste de jeu // 
+app.delete("/api/games/:id", (req, res) => {
+  const {id } = req.params; 
+  const index = games.findIndex((game) => game.id === Number(id));
+  if (index === -1) {
+    return res.status(404).json({ message: "Game not found" });
+  }
+  const deletedGame = games.splice(index, 1)[0];
+  res.json(deletedGame);
+})
+
 // Démarage du serveur //
 const PORT = 3000;
 app.listen(PORT, () => {
